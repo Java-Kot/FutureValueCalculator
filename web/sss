@@ -1,0 +1,4 @@
+<%--//      double rates = Double.parseDouble(request.getParameter("rate")) / 100;--%>
+<%--//      int years = Integer.parseInt(request.getParameter("years"));--%>
+<%--//      double interestrate = rates * invent;--%>
+<%--//      double inventment = invent + (invent * interestrate * years);--%>
