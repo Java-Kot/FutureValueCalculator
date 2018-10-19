@@ -28,24 +28,23 @@
   <%!
       double invent;
       double rates;
-      double interestrate;
       int years;
+      double sum;
 
-      double sum = invent + (invent * interestrate * years);
   %>
   <%
-      boolean quest = request.getParameter("inventment") != null && request.getParameter("rate") != null && request.getParameter("years") != null;
-      if (quest) {
+//      boolean quest = request.getParameter("inventment") != null && request.getParameter("rate") != null && request.getParameter("years") != null;
+      if (request.getParameter("inventment") != null && request.getParameter("rate") != null && request.getParameter("years") != null) {
           invent = Double.parseDouble(request.getParameter("inventment"));
           rates = Double.parseDouble(request.getParameter("rate")) / 100;
           years = Integer.parseInt(request.getParameter("years"));
-          interestrate = rates * invent;
+          sum = invent + (rates* invent * years);
       }
   %>
 
   <div>
     <h1>Future Value Calculator</h1>
-      <form class="form-group" action="index.jsp">
+      <form class="form-group" action="/index.jsp">
           <label>Inventment Amount: </label>
           <input name="inventment" class="form-control" placeholder="10000000" type="number" size="30" />
           <label>Yearly Interest Rate: </label>
@@ -55,7 +54,10 @@
           <button type="submit" class="btn btn-primary">Calculate</button>
       </form>
       <h1>About:
-          <%=sum%>
+          <%
+              out.println(sum);
+
+          %>
       </h1>
   </div>
   </body>
