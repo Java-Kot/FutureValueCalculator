@@ -25,30 +25,38 @@
       </style>
   </head>
   <body>
+  <%!
+      double invent;
+      double rates;
+      double interestrate;
+      int years;
 
+      double sum = invent + (invent * interestrate * years);
+  %>
   <%
       boolean quest = request.getParameter("inventment") != null && request.getParameter("rate") != null && request.getParameter("years") != null;
       if (quest) {
-          double invent = Double.parseDouble(request.getParameter("inventment"));
-          double rates = Double.parseDouble(request.getParameter("rate")) / 100;
-          int years = Integer.parseInt(request.getParameter("years"));
-          double interestrate = rates * invent;
-          double inventment = invent + (invent * interestrate * years);
+          invent = Double.parseDouble(request.getParameter("inventment"));
+          rates = Double.parseDouble(request.getParameter("rate")) / 100;
+          years = Integer.parseInt(request.getParameter("years"));
+          interestrate = rates * invent;
       }
   %>
 
   <div>
     <h1>Future Value Calculator</h1>
       <form class="form-group" action="index.jsp">
-          <label for="inventment">Inventment Amount: </label>
+          <label>Inventment Amount: </label>
           <input name="inventment" class="form-control" placeholder="10000000" type="number" size="30" />
-          <label for="rate">Yearly Interest Rate: </label>
+          <label>Yearly Interest Rate: </label>
           <input name="rate" class="form-control" placeholder="2" type="number" size="2" />
-          <label for="years">Number of Years: </label>
+          <label>Number of Years: </label>
           <input name="years" class="form-control" placeholder="5" type="number" size="3" />
           <button type="submit" class="btn btn-primary">Calculate</button>
       </form>
-      <%--<h1>About: <%= inventment %></h1>--%>
+      <h1>About:
+          <%=sum%>
+      </h1>
   </div>
   </body>
 </html>
